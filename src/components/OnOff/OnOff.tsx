@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 type PropsType = {
     on: boolean
@@ -6,7 +6,7 @@ type PropsType = {
 
 }
 
-function UnControlledOnOff(props: PropsType) {
+export function OnOff(props: PropsType) {
 
     const onStyle = {
         width: "30px",
@@ -43,5 +43,3 @@ function UnControlledOnOff(props: PropsType) {
     )
 
 }
-
-export default UnControlledOnOff;
