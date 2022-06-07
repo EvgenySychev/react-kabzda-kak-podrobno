@@ -11,11 +11,11 @@ type SelectPropsType = {
     items: ItemType[]
 }
 
-export function Select (props: SelectPropsType) {
+export const Select = React.memo ((props: SelectPropsType) => {
     return (
         <div>
             <div>{}</div>
             {props.items.map((i,index) => <div onChange = {() => {props.onChange(i.value)}} key={index}>{i.title}</div>)}
         </div>
     )
-}
+})

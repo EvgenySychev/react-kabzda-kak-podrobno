@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-export function UncontrolledRating() {
+export const UncontrolledRating = React.memo(() => {
     console.log("Rating rendering")
 
     let [value, setValue] = useState(0)
@@ -15,14 +15,14 @@ export function UncontrolledRating() {
             <Star selected={value > 4} setValue={()=> {setValue(5)} }/>
         </div>
     );
-}
+})
 
 type StarPropsType = {
     selected: boolean
     setValue: () => void
     }
 
-function Star(props: StarPropsType) {
+const Star = React.memo((props: StarPropsType) => {
     console.log("Star rendering")
 
     return <span onClick={() => {props.setValue()}}>
@@ -39,4 +39,4 @@ function Star(props: StarPropsType) {
         );
     }*/
 
-}
+})

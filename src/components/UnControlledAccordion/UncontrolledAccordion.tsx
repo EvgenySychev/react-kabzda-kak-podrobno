@@ -4,7 +4,7 @@ type UncontrolledAccordionPropsType = {
     titleValue: string
     }
 
-export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
+export const UncontrolledAccordion = React.memo((props: UncontrolledAccordionPropsType) => {
 
     let [collapsed, setColl] = useState(true);
 
@@ -19,22 +19,22 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
                 {!collapsed && <AccordionBody/>}
             </div>
         )
-}
+})
 
 type AccordionTitlePropsType = {
     title: string
     onClickButtonHandler: ()=> void
 }
 
-function AccordionTitle(props: AccordionTitlePropsType) {
+const AccordionTitle = React.memo ((props: AccordionTitlePropsType)=> {
     console.log("AccordionTitle rendering")
 
     return (
         <h3 onClick={()=> {props.onClickButtonHandler()}}> -- {props.title} -- </h3>
     )
-}
+})
 
-function AccordionBody(props: any) {
+const AccordionBody = React.memo((props: any)=> {
     console.log("AccordionBody rendering")
     return (
         <div>
@@ -45,4 +45,4 @@ function AccordionBody(props: any) {
             </ul>
         </div>
     )
-}
+})
