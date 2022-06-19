@@ -1,31 +1,26 @@
-import React, {useEffect} from "react";
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
+
+const get2digitsString = (num: number) => num < 10 ? "0" + num : num
 
 export const Clock = () => {
-    const [seconds, setSeconds] = useState(55)
-    const [minutes, setMinutes] = useState(59)
-    const [hours, setHours] = useState(0)
-
+    const [date, setDate] = useState(new Date())
 
     useEffect(() => {
-        setInterval(() => {
-            setSeconds(s => s + 1)
+
+        const intervalID = setInterval(() => {
+            setDate(new Date())
         }, 1000)
+        return () => {
+            clearInterval(intervalID)
+        }
     }, [])
 
-    if (seconds===60) {
-        setSeconds(0)
-        setMinutes(minutes + 1)
-    }
+    return <div>
+        <span>{get2digitsString (date.getHours())}</span>
+        :
+        <span>{get2digitsString (date.getMinutes())}</span>
+        :
+        <span>{get2digitsString (date.getSeconds())}</span>
+    </div>
 
-    if (minutes === 60) {
-        setSeconds(0)
-        setMinutes(0)
-        setHours(hours+1)
-    }
-
-    return (
-        <div>
-            {`${hours}:${minutes}:${seconds}`}
-        </div>)
 }
